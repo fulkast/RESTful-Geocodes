@@ -21,7 +21,7 @@ if __name__ == "__main__":
     print ("\nConnection Test Passed!" if testBasicConnection() else "\nConnection Test Failed!")
     print
 
-    locations = ["Maputo", "Tokyo", "Rio de Janeiro", "Washington D.C.", "Malmo", "Qatar", "xyz"]
+    locations = ["Maputo", "Tokyo", "Rio de Janeiro", "Washington D.C.", "Malmo", "Qatar", "xyz", "m0puto"]
     locations = [string.replace(location, " ", "+") for location in locations]
 
     n_passed_tests = 0
