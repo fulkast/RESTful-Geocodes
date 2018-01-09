@@ -1,5 +1,6 @@
 import json
 import urllib2
+import sys
 from flask import Flask, request
 
 
@@ -52,8 +53,13 @@ def geocodesFunction(location_string):
         else:
             return serialize({"location_name": location_string,
                               "status": "Not Found",
-                              "Message": location_string + " was not found by HERE maps"}) , 404
+                              "Message": location_string + " was not found by HERE maps"}) , 200
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+
+    if len(sys.argv) < 2:
+        ''' Prompt for proper usage, obtaining host name and port number '''
+        print ("\nUsage: " + sys.argv[0] + " host_name port_number\n")
+    else:
+        app.run(host=sys.argv[1], port=int(sys.argv[2]))
