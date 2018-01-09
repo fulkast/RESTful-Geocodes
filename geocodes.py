@@ -26,7 +26,7 @@ def serialize(input_dictionary):
 def basicFunction():
     if request.method == "GET":
         return json.dumps({"status": "Connected",
-                           "message": "Successfully connected to geocodes"}), 200
+                           "message": "Successfully connected to geocodes"})
 
 
 # Add the geocode endpoint
@@ -41,14 +41,18 @@ def geocodesFunction(location_string):
         ''' If the location was found by HERE maps '''
         if len(results["Response"]["View"]) > 0:
             ''' Get the location name as found by HERE maps '''
-            corrected_location_string = results["Response"] \
-                                            ["View"][0]["Result"][0]["Location"]["Address"]["Label"]
+            corrected_location_string = location_string + "(" + results["Response"]\
+                                             ["View"][0]["Result"][0]["Location"]["Address"]["Label"] + ")"
             lat = results["Response"]["View"][0]["Result"][0]["Location"]["DisplayPosition"]["Latitude"]
             lng = results["Response"]["View"][0]["Result"][0]["Location"]["DisplayPosition"]["Longitude"]
             return serialize({"location_name": corrected_location_string,
                                "status": "Result Found",
                                "latitude": lat,
-                               "longitude": lng})
+                               "longitude": lng}) , 200
+        else:
+            return serialize({"location_name": location_string,
+                              "status": "Not Found",
+                              "Message": location_string + " was not found by HERE maps"}) , 404
 
 
 if __name__ == "__main__":
