@@ -1,6 +1,6 @@
 # RESTful-Geocodes
 A RESTful geocoding API implemented in Python. When prompted with a location name this API returns the latitude and 
-longitude coordinates of the location in a json structure.
+longitude coordinates of the location in a serialized json structure.
 
 ## Python Dependencies To Run The Service
 - [Flask (A Python web development microframework)](http://flask.pocoo.org/) 
