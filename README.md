@@ -26,7 +26,7 @@ Once the service is up and running, there are several modes to query the geocode
 An example with using [curl](https://curl.haxx.se/) in the terminal and programmatically
 in Python are presented here.
 
-#### Using curl
+#### with curl in the Terminal
 Given the host name and port number used above, the following command attempts to get
 the geocodes of a location.
 
@@ -35,7 +35,7 @@ the geocodes of a location.
 Here, `{location_name}` is a place holder to be replaced with the actual name of
 the location of interest
 
-#### Using urllib2 In Python
+#### with urllib2 and json in Python
 
 `urllib2` is part of the python standard library and can be used to open URL's.
 As the response from this API is serialized in the JSON format, the `json` library
