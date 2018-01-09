@@ -44,8 +44,6 @@ def geocodesFunction(location_string):
         message (in case the location was not found)
     """
     if request.method == "GET":
-        ''' Replace blank spaces with '+' '''
-        string.replace(location_string, " ", "+")
 
         ''' Try finding the lat,lng coordinates with HERE maps '''
         request_url = hereGeocodingURL + location_string
