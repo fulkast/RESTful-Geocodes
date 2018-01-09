@@ -1,6 +1,7 @@
 import json
 import urllib2
 import sys
+import string
 from flask import Flask, request
 
 
@@ -43,6 +44,9 @@ def geocodesFunction(location_string):
         message (in case the location was not found)
     """
     if request.method == "GET":
+        ''' Replace blank spaces with '+' '''
+        string.replace(location_string, " ", "+")
+
         ''' Try finding the lat,lng coordinates with HERE maps '''
         request_url = hereGeocodingURL + location_string
         heremaps_response = urllib2.urlopen(request_url)
